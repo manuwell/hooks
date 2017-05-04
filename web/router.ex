@@ -12,12 +12,6 @@ defmodule Hooks.Router do
   pipeline :api do
   end
 
-  scope "/", Hooks do
-    pipe_through :browser # Use the default browser stack
-
-    get "/", PageController, :index
-  end
-
   # Other scopes may use custom stacks.
   scope "/api", Hooks do
     pipe_through :api
@@ -28,5 +22,14 @@ defmodule Hooks.Router do
     delete  "/:id", Api.HookHandlerController, :handler
     patch   "/:id", Api.HookHandlerController, :handler
     options "/:id", Api.HookHandlerController, :handler
+  end
+
+  # Other scopes may use custom stacks.
+  scope "/", Hooks do
+    pipe_through :browser
+
+    resources     "/", HooksController, only: [:new, :create, :show]
+
+    get "/", HooksController, :new
   end
 end

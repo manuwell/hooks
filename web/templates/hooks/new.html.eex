@@ -1,0 +1,7 @@
+<h2>New hook</h2>
+
+<%= form_for @conn, hooks_path(@conn, :create), [as: :hook], fn f -> %>
+  <div class="form-group">
+    <%= submit "Create", class: "btn btn-primary" %>
+  </div>
+<% end %>
