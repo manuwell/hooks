@@ -8,6 +8,8 @@ defmodule Hooks do
 
     # Define workers and child supervisors to be supervised
     children = [
+      # Start the Exredis
+      worker(Hooks.RedisRepo, [:redis, "redis://localhost:6379/0"]),
       # Start the endpoint when the application starts
       supervisor(Hooks.Endpoint, []),
       # Start your own worker by calling: Hooks.Worker.start_link(arg1, arg2, arg3)
