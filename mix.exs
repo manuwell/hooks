@@ -18,7 +18,7 @@ defmodule Hooks.Mixfile do
   def application do
     [mod: {Hooks, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-       :exredis]]
+       :exredis, :uuid]]
   end
 
   # Specifies which paths to compile per environment.
@@ -35,6 +35,7 @@ defmodule Hooks.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:exredis, ">= 0.2.4"}]
+     {:exredis, ">= 0.2.4"},
+     {:uuid, "~> 1.1"}]
   end
 end
